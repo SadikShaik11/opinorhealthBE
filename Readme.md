@@ -2,9 +2,9 @@ Certainly! Here's a basic README file content based on the provided `package.jso
 
 ---
 
-# Backend Ecommerce
+# Backend OPiNOR HEALTH
 
-This repository contains the backend setup for an ecommerce website.
+This repository contains the backend setup for an OPiNOR HEALTH website.
 
 ## Technologies Used
 
@@ -42,7 +42,7 @@ This repository contains the backend setup for an ecommerce website.
    Run `yarn start` to start the server. This will utilize Nodemon for server auto-restart on file changes.
 
 4. **Accessing the API**:
-   The server will start at `http://localhost:3000` by default (or the specified port in the `.env` file). Use appropriate API endpoints to interact with the ecommerce backend.
+   The server will start at `http://localhost:3000` by default (or the specified port in the `.env` file). Use appropriate API endpoints to interact with the OPiNOR HEALTH backend.
 
 ## License
 
@@ -50,4 +50,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Feel free to expand this README with more detailed instructions, architecture overview, or any other pertinent information about your specific ecommerce backend setup.
+Feel free to expand this README with more detailed instructions, architecture overview, or any other pertinent information about your specific OPiNOR HEALTH backend setup.
