@@ -20,10 +20,11 @@ class UsersService extends Master {
             if (userObj.password != userObj.confirmPassword) {
                 throw this.API_ERROR(this.HTTP_STATUS.BAD_REQUEST, 'password and confirm password is not matching')
             }
-            const user = await userModel.findOne({ email: userObj.email })
+            const user = await userModel.findOne({ mobileNumber: userObj.mobileNumber })
             if (user) {
                 throw this.API_ERROR(this.HTTP_STATUS.BAD_REQUEST, 'user account already exists !')
             }
+
             const hashedPassword = bcrypt.hashSync(userObj.password, 10);
             userObj.password = hashedPassword
             const res = await userModel.create(userObj)
@@ -44,7 +45,7 @@ class UsersService extends Master {
             if (!isPasswordValid) {
                 throw this.API_ERROR(this.HTTP_STATUS.UNAUTHORIZED, 'Invalid credentials');
             }
-            const token = jwt.sign({ userId: user._id },
+            const token = jwt.sign({ userId: user._id, type: user.type },
                 config.JWT_SECRET,
                 { expiresIn: config.tokenExpiry },
                 { algorithm: 'RS256' });
@@ -52,6 +53,7 @@ class UsersService extends Master {
             const userResponse = {
                 _id: user._id,
                 email: user.email,
+                type: user.type
             };
 
             return { token, user: userResponse };
@@ -61,6 +63,19 @@ class UsersService extends Master {
             throw error;
         }
     }
+    async generateRandomUsername(length = 8) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let username = '';
+
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            username += characters.charAt(randomIndex);
+        }
+
+        return username;
+    }
+
+
 }
 
 export default new UsersService()

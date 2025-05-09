@@ -25,7 +25,7 @@ class UserController extends Master {
     async loginUser(req, res) {
         try {
             const response = await UserService.loginUser(req.body);
-            res.status(this.HTTP_STATUS.CREATED).json(response);
+            res.status(this.HTTP_STATUS.ACCEPTED).json(response);
         } catch (error) {
             this.logError("Error logging in user:", error);
             if (error instanceof ApiError) {

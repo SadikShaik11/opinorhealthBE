@@ -52,6 +52,40 @@ class DoctorProfileController extends Master {
             }
         }
     }
+    async updateDoctorSlots(req, res) {
+        try {
+            this.logger.info("DoctorProfileController: Inside updateDoctorSlots controller");
+            const { doctorId } = req.params;
+            const response = await doctorProfileService.updateDoctorSlots(doctorId, req.body);
+            res.status(this.HTTP_STATUS.OK).json(response);
+        } catch (error) {
+            this.logError("Error updating doctor profile:", error);
+            if (error instanceof ApiError) {
+                res.status(error.statusCode).json({ error: error.message });
+            } else {
+                res.status(this.HTTP_STATUS.INTERNAL_SERVER_ERROR).json({ error: "Internal Server Error" });
+            }
+        }
+    }
+    async getDoctorSlotsGroupedByDay(req, res) {
+        try {
+            this.logger.info("DoctorProfileController: Inside getDoctorSlotsGroupedByDay controller");
+
+            const { doctorId } = req.params;
+
+            const response = await doctorProfileService.getDoctorSlotsGroupedByDay(doctorId);
+            res.status(this.HTTP_STATUS.OK).json(response);
+
+        } catch (error) {
+            this.logError("Error fetching doctor slots:", error);
+            if (error instanceof ApiError) {
+                res.status(error.statusCode).json({ error: error.message });
+            } else {
+                res.status(this.HTTP_STATUS.INTERNAL_SERVER_ERROR).json({ error: "Internal Server Error" });
+            }
+        }
+    }
+
 }
 
 export const doctorProfileController = new DoctorProfileController();

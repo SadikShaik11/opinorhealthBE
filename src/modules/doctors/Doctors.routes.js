@@ -8,4 +8,6 @@ router.post('/doctor-onboarding', (req, res) => catchAsync(doctorProfileControll
 
 
 router.put('/update-doctor-profile/:doctorId', (req, res) => catchAsync(doctorProfileController.updateDoctorProfile(req, res)))
+router.put('/update-doctor-slots/:doctorId', (req, res) => catchAsync(doctorProfileController.updateDoctorSlots(req, res)))
+router.get('/doctor-slots/:doctorId', (req, res) => catchAsync(doctorProfileController.getDoctorSlotsGroupedByDay(req, res)))
 export default router;

@@ -14,11 +14,26 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    name: {
+        type: String,
+        required: true,
+    },
     token: {
         type: String,
     },
     refreshToken: {
         type: String
+    },
+    type: {
+        type: String,
+        enum: ['DOCTOR', 'USER', 'ADMIN', 'LAB_ASSISTANT'],
+        required: true
+    },
+    status: {
+        type: String,
+        enum: ['ACTIVE', 'INACTIVE'],
+        default: 'ACTIVE',
+        required: true
     }
 });
 

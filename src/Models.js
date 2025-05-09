@@ -6,7 +6,7 @@ import { hospitalModel } from "./modules/hospital/onboarding/hospital-onboarding
 import { userModel } from "./modules/users/Users.model.js";
 import { adminModel } from "./modules/admin/Admin.model.js";
 import { doctorsModel } from "./modules/doctors/Doctors.model.js";
-
+import { doctorSlotsModel } from "./modules/doctors/slots/DoctorSlots.model.js";
 
 export default {
     // Use CAPITAL_SNAKE_CASE for constants (e.g., USER_MODEL instead of UserModel)
@@ -15,5 +15,6 @@ export default {
     HOSPITAL_ADMIN: hospitalAdminModel,
     DOCUMENTS_MODEL: documentsModel,
     ADMIN_MODEL: adminModel,
-    DOCTOR_PROFILE_MODEL: doctorsModel
+    DOCTOR_PROFILE_MODEL: doctorsModel,
+    DOCTOR_SLOTS: doctorSlotsModel
 };
